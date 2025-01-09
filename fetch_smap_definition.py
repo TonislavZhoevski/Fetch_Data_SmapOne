@@ -1,4 +1,3 @@
-"""
 import requests
 from config import BASE_URL, ACCESS_TOKEN
 
@@ -47,4 +46,3 @@ def update_data(smap_id, version, updated_data):
     except requests.exceptions.RequestException as e:
         print(f"Error updating data: {e}")
         return None
-"""

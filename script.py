@@ -1,12 +1,15 @@
-import requests
 
-API_KEY = "452ab15f3aec793473ef4395c02752c055031102"
-SMAP_ID = "e7e9255f-3109-4498-801e-2ba407950c53"
-BASE_URL = "https://platform.smapone.com/Backend/intern"
-VERSION = "11.0"
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
-url = f"{BASE_URL}/Smaps/{SMAP_ID}/Versions/{VERSION}/Definition"
-headers = {"Authorization": f"Bearer {API_KEY}", "accept": "application/json"}
+uri = "mongodb+srv://tonislavzhoevski:qOEPsynCs931MpNN@cluster0.ize8r.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-response = requests.get(url, headers=headers)
-print(response.json())
+# Create a new client and connect to the server
+client = MongoClient(uri, server_api=ServerApi('1'))
+
+# Send a ping to confirm a successful connection
+try:
+    client.admin.command('ping')
+    print("Pinged your deployment. You successfully connected to MongoDB!")
+except Exception as e:
+    print(e)
